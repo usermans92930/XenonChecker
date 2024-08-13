@@ -44,7 +44,7 @@ for combo in combolist:
     username = acc[0]
     password = acc[1]
 
-    driver = webdriver.Chrome(options=options,r'chromedriver.exe')
+    driver = webdriver.Chrome(r'chromedriver.exe')
     driver.get("https://www.roblox.com/Login")
     sleep(1)
     cookieBtn = driver.find_element(By.XPATH, "//*[contains(text(), 'Accept All')]")
